@@ -113,9 +113,12 @@ Ext.define('WordApp.view.MyTabPanel', {
                                 message: 'Loading...'
                             });
 
-                            Ext.getStore('offlineSyncStore').loadServer();
-                            Ext.getStore('quoteSyncStore').loadServer(function(){
+                            Ext.getStore('offlineSyncStore').loadServer(function(s){
+                                WordApp.app.getController('MyController').getWordListButton().setBadgeText(s.length);
+                            });
+                            Ext.getStore('quoteSyncStore').loadServer(function(s){
                                 Ext.Viewport.setMasked(false);
+                                WordApp.app.getController('MyController').getQuoteListButton().setBadgeText(s.length);
                             });
                         },
                         text: 'LoadServer'

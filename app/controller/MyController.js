@@ -17,6 +17,10 @@ Ext.define('WordApp.controller.MyController', {
     extend: 'Ext.app.Controller',
 
     config: {
+        refs: {
+            wordListButton: 'tabbar button[title=\'Words\']',
+            quoteListButton: 'tabbar button[title="Quotes"]'
+        }
     },
 
     showEditForm: function(record) {
